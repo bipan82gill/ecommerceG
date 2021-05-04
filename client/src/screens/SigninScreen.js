@@ -45,7 +45,7 @@ export default function SigninScreen(props) {
                     />
                 </div>
                 <div>
-                    <label htmlFor="password">Email password</label>
+                    <label htmlFor="password">Password</label>
                     <input 
                     type="password"
                     id="password"
