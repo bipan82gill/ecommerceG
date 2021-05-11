@@ -34,7 +34,7 @@ function App() {
       <header className="row">
         <div>
           <Link className="brand" to="/">
-            G-Tech Automation
+           E- Commerce
           </Link>
         </div>
         <div>
