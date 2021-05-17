@@ -8,7 +8,7 @@ const productRouter = express.Router();
 productRouter.get('/', expressAsyncHandler(async(req, res)=>{ 
   const seller = req.query.seller || '';
   const sellerFilter = seller ? { seller } : {}; 
-  const products = await Product.find({...sellerFilter});
+  const products = await Product.find({...sellerFilter}).populate('seller','seller.name seller.logo');
     res.send(products);
 }))
 productRouter.get('/seed', expressAsyncHandler(async(req, res)=>{
@@ -17,7 +17,7 @@ productRouter.get('/seed', expressAsyncHandler(async(req, res)=>{
 }));
 
 productRouter.get('/:id', expressAsyncHandler(async(req, res)=>{
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id).populate('seller','seller.name seller.logo seller.rating seller.numReviews');
     if(product){
         res.send(product)
     }else{

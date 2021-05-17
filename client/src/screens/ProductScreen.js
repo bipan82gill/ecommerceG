@@ -14,6 +14,7 @@ export default function ProductScreen(props) {
     const productDetails = useSelector((state) => state.productDetails);
    const {loading, error, product} = productDetails;
    
+   
    useEffect(()=>{
     dispatch(detailsProduct(productId));
    },[dispatch,productId])
@@ -38,7 +39,16 @@ export default function ProductScreen(props) {
                 <ul>
                     <li>{product.name}</li>
                     <li><Rating rating={product.ratring} numReviews={product.numReviews}/></li>
-                    <li>Price: ${product.price}</li>
+                    <li>
+                        <div className="row">
+                            <div> Price: ${product.price}</div>                       
+                            <div>
+                                <Link to={`/seller/${product.seller._id}`}>{product.seller.seller.name}</Link>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    
                     <li>Description:<p>{product.description}</p></li>
                 </ul>
 
@@ -46,7 +56,15 @@ export default function ProductScreen(props) {
             <div className="col-1">
                 <div className="card card-body">
                     <ul>
+                        <li>Seller{' '}<h2>
+                        <Link to={`/seller/${product.seller._id}`}>{product.seller.seller.name}</Link>
+                        </h2>
+                        <Rating
+                         rating={product.seller.seller.rating} 
+                         numReviews={product.seller.seller.numReviews}/>
+                        </li>
                         <li>
+
                             <div className="row">
                             <div>Price: </div>
                             <div className="price">{product.price}</div>
