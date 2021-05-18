@@ -143,6 +143,7 @@ img.medium {
   width: 100%;
 }
 img.large{
+  max-width: 50rem;
   width:100%;
 }
 
@@ -152,6 +153,7 @@ img.large{
   background-color: #f8f8f8;
   border-radius: 0.5rem;
   margin: 1rem;
+  max-width: 30rem;
 }
 .card-body {
   padding: 1rem;

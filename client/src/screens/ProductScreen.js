@@ -38,17 +38,7 @@ export default function ProductScreen(props) {
             <div className="col-1">
                 <ul>
                     <li>{product.name}</li>
-                    <li><Rating rating={product.ratring} numReviews={product.numReviews}/></li>
-                    <li>
-                        <div className="row">
-                            <div> Price: ${product.price}</div>                       
-                            <div>
-                                <Link to={`/seller/${product.seller._id}`}>{product.seller.seller.name}</Link>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    
+                    <li><Rating rating={product.ratring} numReviews={product.numReviews}/></li>              
                     <li>Description:<p>{product.description}</p></li>
                 </ul>
 

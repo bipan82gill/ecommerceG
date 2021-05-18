@@ -5,6 +5,7 @@ import Product from '../models/productModel.js';
 import {isAuth, isAdmin, isSellerOrAdmin} from '../utils.js';
 const productRouter = express.Router();
 
+
 productRouter.get('/', expressAsyncHandler(async(req, res)=>{ 
   const seller = req.query.seller || '';
   const sellerFilter = seller ? { seller } : {}; 
