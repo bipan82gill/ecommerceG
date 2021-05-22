@@ -18,14 +18,16 @@ export default function UserEditScreen(props) {
     const {loading, error, user} = userDetails;
 
     const userUpdate = useSelector(state=> state.userUpdate);
-    const {loading: loadingUpdate, error: errorUpdate,success: successUpdate} = userUpdate;
+    const {loading: loadingUpdate, 
+        error: errorUpdate, 
+        success: successUpdate} = userUpdate;
 
     useEffect(()=>{
         if(successUpdate){
-            dispatch({type: USER_UPDATE_RESET})
             props.history.push('/userlist');
         }
         if(!user){
+            dispatch({type: USER_UPDATE_RESET})
             dispatch(detailsUser(userId));
         }else{
             setName(user.name);
@@ -90,7 +92,7 @@ export default function UserEditScreen(props) {
                 <div>
                     <button type="submit" 
                     className="primary"
-    >Update</button>
+                    >Update</button>
                 </div>
                 </>
                 )

@@ -2,7 +2,7 @@ import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { cartReducer } from './reducers/cartReducers';
 import { orderCreateReducer, orderDeleteReducer, orderDeliverReducer, orderDetailsReducer, orderListReducer, orderMineListReducer, orderPayReducer } from './reducers/orderReducers';
-import { productCreateReducer, productDeleteReducer, productDetailsReducer, productListReducer } from './reducers/productReducers';
+import { productCategoryListReducer, productCreateReducer, productDeleteReducer, productDetailsReducer, productListReducer, productUpdateReducer } from './reducers/productReducers';
 import { userDeleteReducer, userDetailsReducer, userListReducer, userRegisterReducer, userSigninReducer, userTopSellersListReducer, userUpdateProfileReducer, userUpdateReducer } from './reducers/userReducers';
 
 const initialState ={
@@ -35,7 +35,7 @@ const reducer = combineReducers({
     userDetails : userDetailsReducer,
     userUpdateProfile: userUpdateProfileReducer,
     productCreate: productCreateReducer,
-    productUpdate: productCreateReducer,
+    productUpdate: productUpdateReducer,
     productDelete: productDeleteReducer,
     orderList :orderListReducer,
     orderDelete: orderDeleteReducer,
@@ -44,6 +44,7 @@ const reducer = combineReducers({
     userDelete: userDeleteReducer,
     userUpdate: userUpdateReducer,
     userTopSellersList: userTopSellersListReducer,
+    productCategoryList: productCategoryListReducer,
 })
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducer, initialState, composeEnhancer(applyMiddleware(thunk)));

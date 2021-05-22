@@ -14,9 +14,10 @@ export default function OrderHistoryScreen(props) {
     return (
         <div>
             <h1>Order History</h1>
-            {loading? (<LoadingBox></LoadingBox>)
+            {loading ? (<LoadingBox></LoadingBox>)
             : error ? (<MessageBox variant="danger">{error}</MessageBox>)
             : (
+                <>
                 <table className="table">
                     <thead>
                         <tr>
@@ -34,11 +35,11 @@ export default function OrderHistoryScreen(props) {
                                <td>{order._id}</td>
                                <td>{order.createdAt.substring(0, 10)}</td>
                                 <td>{order.totalPrice.toFixed(2)}</td>
-                                <td>{order.isPaid ? order.paidAt.substring(0, 10):'No'}</td>
-                                <td>{order.isDelivered
-                                ? order.deliveredAt.substring(0, 10):'No'}</td>
+                                <td>{order.isPaid ? 'YES':'No'}</td>
+                                <td>{order.isDelivered ? 'YES':'No'}</td>
                            <td>
-                               <button type='button' className="small" onClick={()=>{
+                               <button type='button' className="small" 
+                               onClick={()=>{
                                    props.history.push(`/order/${order._id}`);
                                }}>Details</button>
                            </td>
@@ -46,6 +47,7 @@ export default function OrderHistoryScreen(props) {
                        ))}
                    </tbody>
                 </table>
+                </>
             )}
             </div>
     )
