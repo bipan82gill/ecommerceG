@@ -26,8 +26,8 @@ import SellerScreen from './screens/SellerScreen';
 import SearchBox from './components/SearchBox';
 import SearchScreen from './screens/SearchScreen';
 import { listProductCategories } from './actions/productActions';
-// import LoadingBox from './components/LoadingBox';
-// import MessageBox from './components/MessageBox';
+import LoadingBox from './components/LoadingBox';
+import MessageBox from './components/MessageBox';
 
 function App() {
   const cart = useSelector((state)=>state.cart);
@@ -39,16 +39,16 @@ function App() {
   const signoutHandler = ()=>{
        dispatch(signout());
   }
-  // const productCategoryList = useSelector((state) => state.productCategoryList);
-  // const {
-  //   loading: loadingCategories,
-  //   error: errorCategories,
-  //   categories,
-  // } = productCategoryList;
+  const productCategoryList = useSelector((state) => state.productCategoryList);
+  const {
+    loading: loadingCategories,
+    error: errorCategories,
+    categories,
+  } = productCategoryList;
     
   useEffect(()=>{
     dispatch(listProductCategories());
-  })
+  },[dispatch])
   return (
     <Router>
     <div className="grid-container">
@@ -152,7 +152,7 @@ function App() {
                 <i className="fa fa-close"></i>
               </button>
             </li>
-            {/* {loadingCategories ? (
+            {loadingCategories ? (
               <LoadingBox></LoadingBox>
             ) : errorCategories ? (
               <MessageBox variant="danger">{errorCategories}</MessageBox>
@@ -167,7 +167,7 @@ function App() {
                   </Link>
                 </li>
               ))
-            )} */}
+            )}
           </ul>
         </aside>
 

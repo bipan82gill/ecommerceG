@@ -37,15 +37,16 @@ export default function SearchScreen(props) {
             : (<div>
                 {products.length} Results
             </div>)
-            }
-            
+} 
         </div>
-        <div className="row">
+        <div className="row top">
             <div className="col-1">
                 <h3>Department</h3>
-            { loadingCategories ?(<LoadingBox></LoadingBox>)
-            : errorCategories ? (<MessageBox variant="error">{errorCategories}</MessageBox>)
-            : (
+            { loadingCategories ? (
+            <LoadingBox></LoadingBox>
+            ) : errorCategories ? (
+            <MessageBox variant="error">{errorCategories}</MessageBox>
+            ) : (
                <ul>
                   {categories.map((c)=>(
                       <li key={c}>
@@ -56,14 +57,15 @@ export default function SearchScreen(props) {
                         </Link>
                       </li>
                     ))}                      
-            </ul>)
-            }
+            </ul>
+            )}
                 
             </div>
             <div className="col-3">
             {loading ?(<LoadingBox></LoadingBox>)
             : error ? (<MessageBox variant="error">{error}</MessageBox>)
-            : (   <>
+            : (   
+                <>
                 {products.length === 0 && <MessageBox variant="danger">No Product Found</MessageBox>}
                     <div className='row center'>
                     
@@ -72,10 +74,10 @@ export default function SearchScreen(props) {
                      <Product key={product._id} product={product}></Product>
                   ))}
                 </div>
-                </>)
-            }
+                </>
+                )}
             </div>
-        </div>
+           </div>
         </div>
     )
 }
